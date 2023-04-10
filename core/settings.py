@@ -46,7 +46,10 @@ if DEBUG:
 
 # Application definition
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    "apps.users",
+    "apps.basic",
+]
 
 DJANGO_APPS = [
     "django.contrib.admin",
@@ -57,7 +60,10 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "crispy_forms",
+    "crispy_bootstrap5",
+]
 
 INSTALLED_APPS = LOCAL_APPS + DJANGO_APPS + THIRD_PARTY_APPS
 
@@ -72,6 +78,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "core.urls"
+
+AUTH_USER_MODEL = "users.User"
 
 TEMPLATES = [
     {
@@ -88,6 +96,9 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 WSGI_APPLICATION = "core.wsgi.application"
 
@@ -155,3 +166,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGOUT_REDIRECT_URL = "basic:index"
+LOGIN_REDIRECT_URL = "basic:index"
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

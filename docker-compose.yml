@@ -16,7 +16,6 @@ services:
     profiles:
       - full_dev
 
-
   postgres:
     image: postgres:15.2
     volumes:
